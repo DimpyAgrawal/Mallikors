@@ -32,6 +32,11 @@ const apiKey = 'AIzaSyCeOKb-Q5-NEb5mbNntnFGP61r_-xCsO9Y';
 app.use('/auth',router);
 app.use('/',applicat);
 
+// Serve the frontend (if needed)
+app.use(express.static(path.join(__dirname,'dist')));
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname,'dist', 'index.html'));
+});
 
 const server = app.listen(port,()=>{
     console.log(`server is running on port ${port}`);
