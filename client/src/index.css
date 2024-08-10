@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Grey+Qo&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Satisfy&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.fixed {
+ /* Subtle curve on top and pronounced curve on bottom right corner */
+border-top-right-radius: 20px 30px;
+border-bottom-right-radius: 60px 90px;
+
+
+
+
+    overflow: hidden; 
+    position: relative; 
+}
+
+.fixed::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 30px;
+    height: 100%;
+    background: white;
+    border-top-right-radius: 30px 50px;
+    border-bottom-right-radius: 30px 50px;
+    box-shadow: inset -10px 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.fixed:hover::before {
+    right: -40px;
+    width: 40px;
+    border-top-right-radius: 40px 60px;
+    border-bottom-right-radius: 40px 60px;
+}
+
+.sidebar-text {
+    opacity: 0; /* Initially hide text */
+    transition: opacity 0.3s ease; /* Smooth transition for text */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.fixed:hover .sidebar-text {
+    opacity: 1; /* Show text on hover */
+    transition-delay: 0.1s; /* Delay to synchronize with sidebar expansion */
+}
